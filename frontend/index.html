@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceOps — Voice AI Operations Platform</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__logo">
+        <span class="logo-mark">V</span>
+        <span class="logo-text">VoiceOps</span>
+      </div>
+      <nav class="sidebar__nav" aria-label="Main navigation">
+        <button class="nav-item is-active" data-view="voice-assistant">🎙️ <span>Voice Assistant</span></button>
+        <button class="nav-item" data-view="conversations">💬 <span>Conversations</span></button>
+        <button class="nav-item" data-view="agent-activity">🤖 <span>Agent Activity</span></button>
+        <button class="nav-item" data-view="approvals">✅ <span>Approvals</span></button>
+        <button class="nav-item" data-view="tasks">📋 <span>Tasks</span></button>
+        <button class="nav-item" data-view="history">🕘 <span>History</span></button>
+        <button class="nav-item" data-view="documents">📄 <span>Documents</span></button>
+        <button class="nav-item" data-view="settings">⚙️ <span>Settings</span></button>
+      </nav>
+      <div class="sidebar__footer">
+        <span id="api-status-dot" class="status-dot status-dot--unknown" title="API status"></span>
+        <span id="api-status-text">Checking API…</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- Voice Assistant -->
+      <section class="view is-active" id="view-voice-assistant">
+        <header class="view__header">
+          <h1>Voice Assistant</h1>
+          <p class="view__subtitle">Chat with the supervisor agent. Voice I/O lands here in a later part.</p>
+        </header>
+        <div class="panel">
+          <div class="voice-container">
+            <div class="voice-stage">
+              <button id="mic-button" class="mic-button mic-button--idle" title="Click to talk (or hold Space)">
+                <span class="mic-icon" id="mic-icon">🎙️</span>
+              </button>
+              <p class="voice-state-label" id="voice-state-label">Tap the microphone and speak</p>
+              <p class="voice-error" id="voice-error" hidden></p>
+              <button class="btn" id="voice-retry" hidden>↻ Try again</button>
+            </div>
+            <div class="voice-transcripts">
+              <div class="transcript-row" id="partial-row" hidden>
+                <span class="transcript-label">Listening…</span>
+                <span class="transcript-text" id="partial-transcript"></span>
+              </div>
+              <div class="transcript-row" id="final-row" hidden>
+                <span class="transcript-label">You said</span>
+                <span class="transcript-text" id="final-transcript"></span>
+              </div>
+              <div class="transcript-row" id="response-row" hidden>
+                <span class="transcript-label">VoiceOps</span>
+                <span class="transcript-text" id="response-transcript"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 16px;">
+          <div class="chat-container">
+            <div class="chat-messages" id="chat-messages" aria-live="polite">
+              <div class="chat-message chat-message--agent">
+                <div class="chat-bubble">Hi! I'm VoiceOps. Ask me anything — by voice or text.</div>
+              </div>
+            </div>
+            <form class="chat-input-row" id="chat-form">
+              <input
+                type="text"
+                id="chat-input"
+                class="chat-input"
+                placeholder="Type a message…"
+                autocomplete="off"
+                maxlength="4000"
+              />
+              <button type="submit" class="btn btn--primary" id="chat-send">Send</button>
+            </form>
+            <p class="chat-status" id="chat-status"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conversations -->
+      <section class="view" id="view-conversations" hidden>
+        <header class="view__header">
+          <h1>Conversations</h1>
+          <p class="view__subtitle">Live and past conversations with the assistant.</p>
+        </header>
+        <div class="panel">
+          <div class="conv-layout">
+            <div class="conv-list" id="conversation-list" aria-label="Saved conversations"></div>
+            <div class="conv-detail" id="conversation-detail">
+              <p class="placeholder-text">Select a conversation to view its messages.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Agent Activity -->
+      <section class="view" id="view-agent-activity" hidden>
+        <header class="view__header">
+          <h1>Agent Activity</h1>
+          <p class="view__subtitle">Which agents ran, what tools they called, and what they returned.</p>
+        </header>
+        <div class="panel">
+          <div class="activity-toolbar">
+            <button class="btn" id="activity-refresh">↻ Refresh from server</button>
+            <span class="placeholder-text" id="activity-source">Showing live events from this session</span>
+          </div>
+          <div id="agent-activity">
+            <p class="placeholder-text" id="activity-empty">No agent activity yet — send a message in the Voice Assistant tab.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Approvals -->
+      <section class="view" id="view-approvals" hidden>
+        <header class="view__header">
+          <h1>Approvals</h1>
+          <p class="view__subtitle">Sensitive actions waiting for human confirmation.</p>
+        </header>
+        <div class="panel">
+          <div class="approvals-toolbar">
+            <button class="btn" id="approvals-refresh">↻ Refresh</button>
+            <span class="placeholder-text" id="approvals-empty">No approvals yet — ask the agent to do something sensitive (e.g. “send an email”).</span>
+          </div>
+          <div id="approvals-list"></div>
+        </div>
+        <div class="panel" style="margin-top:16px">
+          <h3 style="margin-top:0">Audit trail</h3>
+          <div id="audit-list"><p class="placeholder-text">Sensitive-action history appears here.</p></div>
+        </div>
+      </section>
+
+      <!-- Tasks -->
+      <section class="view" id="view-tasks" hidden>
+        <header class="view__header">
+          <h1>Tasks</h1>
+          <p class="view__subtitle">Work items created and managed by the agents.</p>
+        </header>
+        <div class="panel">
+          <form class="task-create-row" id="task-create-form">
+            <input type="text" id="task-title-input" class="chat-input" placeholder="New task title…" maxlength="200" />
+            <button type="submit" class="btn btn--primary">Add task</button>
+          </form>
+          <div id="task-list" aria-label="Tasks"></div>
+        </div>
+      </section>
+
+      <!-- Documents -->
+      <section class="view" id="view-documents" hidden>
+        <header class="view__header">
+          <h1>Documents</h1>
+          <p class="view__subtitle">Upload PDF / TXT / DOCX, then ask about them in chat or by voice.</p>
+        </header>
+        <div class="panel">
+          <form class="task-create-row" id="doc-upload-form">
+            <input type="file" id="doc-file-input" class="chat-input" accept=".pdf,.txt,.docx" />
+            <button type="submit" class="btn btn--primary" id="doc-upload-btn">Upload</button>
+          </form>
+          <form class="task-create-row" id="doc-search-form">
+            <input type="text" id="doc-search-input" class="chat-input" placeholder="Search your documents…" maxlength="500" />
+            <button type="submit" class="btn">Search</button>
+          </form>
+          <div class="doc-search-results" id="doc-search-results"></div>
+          <div id="doc-list"></div>
+        </div>
+      </section>
+
+      <!-- History -->
+      <section class="view" id="view-history" hidden>
+        <header class="view__header">
+          <h1>History</h1>
+          <p class="view__subtitle">Full audit log of executed actions and outcomes.</p>
+        </header>
+        <div class="panel"><p class="placeholder-text">History requires persistence (Postgres), coming in a later part.</p></div>
+      </section>
+
+      <!-- Settings -->
+      <section class="view" id="view-settings" hidden>
+        <header class="view__header">
+          <h1>Settings</h1>
+          <p class="view__subtitle">Connections and provider configuration.</p>
+        </header>
+        <div class="panel">
+          <div class="setting-row">
+            <span class="setting-label">Backend API</span>
+            <span class="setting-value" id="setting-api-url">—</span>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Health status</span>
+            <span class="setting-value" id="setting-api-health">—</span>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Environment</span>
+            <span class="setting-value" id="setting-env">development</span>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Google account</span>
+            <span class="setting-value" id="google-status">checking…</span>
+          </div>
+          <div style="margin-top:12px">
+            <a id="google-connect-link" class="btn btn--primary" href="#" style="text-decoration:none;display:none">Connect Google Calendar & Gmail</a>
+            <button id="google-disconnect" class="btn" style="display:none">Disconnect Google</button>
+          </div>
+        </div>
+
+        <div class="panel" id="account-panel">
+          <h2>Account</h2>
+          <div id="auth-forms">
+            <div class="setting-row">
+              <input type="email" id="auth-email" placeholder="email@example.com" autocomplete="email" />
+            </div>
+            <div class="setting-row">
+              <input type="text" id="auth-name" placeholder="Your name (register only)" autocomplete="name" />
+            </div>
+            <div class="setting-row">
+              <input type="password" id="auth-password" placeholder="Password (min 8 chars)" autocomplete="current-password" />
+            </div>
+            <div style="margin-top:12px; display:flex; gap:8px">
+              <button id="auth-login" class="btn btn--primary">Sign in</button>
+              <button id="auth-register" class="btn">Create account</button>
+              <button id="auth-logout" class="btn" style="display:none">Sign out</button>
+            </div>
+            <p id="auth-message" class="view__subtitle" style="margin-top:8px"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/approvals.js"></script>
+  <script src="js/documents.js"></script>
+</body>
+</html>

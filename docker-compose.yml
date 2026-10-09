@@ -1,0 +1,67 @@
+# VoiceOps local development stack: frontend, backend, postgres (pgvector), redis.
+#
+#   docker compose up --build
+#
+#   frontend  http://localhost:3000
+#   backend   http://localhost:8000/docs
+#
+# Real provider keys (GEMINI_API_KEY, Google OAuth, Deepgram, ElevenLabs) are
+# read from .env at the repo root — never hardcoded here.
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: voiceops
+      POSTGRES_PASSWORD: voiceops-dev-password
+      POSTGRES_DB: voiceops
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U voiceops -d voiceops"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      # Local dev defaults; override via .env if needed.
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: voiceops
+      POSTGRES_PASSWORD: voiceops-dev-password
+      POSTGRES_DB: voiceops
+      REDIS_URL: redis://redis:6379/0
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Apply migrations before serving (fail fast on a broken schema).
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

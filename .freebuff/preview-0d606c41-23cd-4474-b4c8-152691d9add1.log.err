@@ -1,0 +1,102 @@
+127.0.0.1 - - [09/Oct/2026 09:48:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:48:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:48:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:49:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:49:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:50:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:50:58] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:51:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:51:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:52:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:52:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:57:08] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:57:08] "GET /api/v1/tasks HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:57:09] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:57:09] "GET /api/v1/approvals HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:57:09] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:57:09] "GET /api/v1/audit?limit=50 HTTP/1.1" 404 -
+9:39:45] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:39:45] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /css/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/config.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/api.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/voice.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/approvals.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/auth.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /js/documents.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:05] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:05] "GET /api/v1/auth/google/status HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:06] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:06] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:13] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:13] "GET /api/v1/conversations HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:14] "GET /api/v1/auth/google/status HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:15] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:15] "GET /api/v1/activity?limit=20 HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:17] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:17] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:17] "GET /api/v1/approvals HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:17] "GET /api/v1/audit?limit=50 HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:20] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:20] "GET /api/v1/tasks HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:35] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:35] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:40:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:40:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:41:05] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:41:05] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:41:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:41:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:41:35] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:41:35] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:41:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:41:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:42:05] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:42:05] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:42:08] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:42:08] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:42:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:42:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:42:35] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:42:35] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:42:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:42:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:43:05] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:43:05] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:43:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:43:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:43:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:43:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:43:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:43:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:44:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:44:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:44:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:44:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:44:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:44:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:45:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:45:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:45:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:45:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:45:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:45:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:46:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:46:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:46:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:46:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:46:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:46:57] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:47:14] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:47:14] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:47:44] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:47:44] "GET /api/v1/health HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 09:47:57] code 404, message File not found
+127.0.0.1 - - [09/Oct/2026 09:47:57] "GET /api/v1/health HTTP/1.1" 404 -
